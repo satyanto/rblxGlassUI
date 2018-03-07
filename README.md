@@ -5,3 +5,5 @@ This was a UI library I made on ROBLOX to make it easier for me to make a unifie
 
 To use, simply insert the code under Library_GlassUI into a ModuleScript, and place ModuleScript under ServerStorage in the game. To use
 the library, simply require() the ModuleScript and then call the functions inside the library with the appropriate arguments.
+
+![Alt Text](https://media.giphy.com/media/5bojxRYuVRdmyXthFY/giphy.gif)
