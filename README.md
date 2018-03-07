@@ -1,4 +1,4 @@
-![Alt Text](https://i.imgur.com/z7eiUeN.png)
+![Alt Text](https://i.imgur.com/yT1i9GZ.png)
 # rblxGlassUI
 
 Roblox Project: Glass UI Library
@@ -25,3 +25,12 @@ Not a lot of options:
 
 A lot of options:
 ![Alt Text](https://media.giphy.com/media/1wrBjuBvED7ky6CV2y/giphy.gif)
+
+## Basic Menu List
+Used as a pop-up for user interaction, comes in framed background and no background flavors.
+
+No background:
+![Alt Text](https://media.giphy.com/media/3FnMqtgX1Oxjv9xWt2/giphy.gif)
+
+Framed background:
+![Alt Text](https://media.giphy.com/media/2dbnh5iahIpllP5NrV/giphy.gif)
