@@ -37,9 +37,7 @@
 
 --]]
 
-local Mouse = game:GetService("Players").LocalPlayer:GetMouse()
-repeat wait() until Mouse
-
+local UserInputService = game:GetService("UserInputService")
 local FunctionTable = {}
 
 function FunctionTable.Create_MenuBar(Object_Name, Object_Directory, Menu_Width, Item_Table, Item_Button_Directory, Return_Object)
@@ -647,7 +645,7 @@ FunctionTable["Create_DynamicList_Scroll"] = function(Object_Name, Object_Direct
 		InFrame = true
 		while InFrame do
 		if (not InFrame) then break end
-		Container.Position = UDim2.new(0,0,0,(Container.AbsoluteSize.Y - Mouse.Y))
+		Container.Position = UDim2.new(0,0,0,(Container.AbsoluteSize.Y - UserInputService.GetMouseLocation().Y))
 		wait(1/30)
 		end
 	end)
