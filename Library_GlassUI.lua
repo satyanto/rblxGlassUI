@@ -113,14 +113,14 @@ function FunctionTable.Create_MenuBar(Object_Name, Object_Directory, Menu_Width,
 		NewButton.Size = UDim2.new(1,0,Difference,0)
 		NewButton.ZIndex = 9
 		ButtonPos = ButtonPos + Difference
-		NewButton.MouseEnter:connect(function()
+		NewButton.MouseEnter:Connect(function()
 			local VisText = TextContainer[NewButton.Name]
 			if (not VisText) then return end
 			TextContainer:TweenPosition(UDim2.new(0,0,(-(VisText["ItemNumber"].Value/10)+0.1),0),"Out","Quad",0.25,true)
 			VisText.FontSize = "Size36"
 			wait(0)
 		end)
-		NewButton.MouseLeave:connect(function()
+		NewButton.MouseLeave:Connect(function()
 			TextContainer[NewButton.Name].FontSize = "Size14"
 			wait(0)
 		end)
@@ -219,11 +219,11 @@ function FunctionTable.Create_TextButton(Object_Name, Button_Text, Object_Direct
 	Highlight.BackgroundTransparency = 0.8
 	Highlight.BackgroundColor3 = Color3.new(0,0,0)
 	Highlight.ZIndex = Object_ZIndex
-	Button.MouseEnter:connect(function()
+	Button.MouseEnter:Connect(function()
 		Ylight:TweenSizeAndPosition(UDim2.new(0,2,1,0), UDim2.new(0,-2,0,0), "Out", "Quad", 0.2, true)
 		Highlight:TweenSizeAndPosition(UDim2.new(1,0,1,0), UDim2.new(0,0,0,0), "Out", "Quad", 0.2, true)
 	end)
-	Button.MouseLeave:connect(function()
+	Button.MouseLeave:Connect(function()
 		Ylight:TweenSizeAndPosition(UDim2.new(0,0,0,0), UDim2.new(0,-2,0.5,0), "Out", "Quad", 0.2, true)
 		Highlight:TweenSizeAndPosition(UDim2.new(1,0,0,0), UDim2.new(0,0,0.5,0), "Out", "Quad", 0.2, true)
 	end)
@@ -234,7 +234,7 @@ function FunctionTable.Create_OverflowMenu_TextButton(Object_Name, Object_Direct
 	local Button = FunctionTable["Create_TextButton"](tostring(Object_Name), tostring(MenuOptions[1][2]), Object_Directory, Object_Size, Object_Position, Object_ZIndex)
 	local ButtonValue = Instance.new("StringValue", Button)
 	ButtonValue.Name = "Value"
-	Button.MouseButton1Click:connect(function()
+	Button.MouseButton1Click:Connect(function()
 		local ScrollSize = UDim2.new(Object_Size.X.Scale, Object_Size.X.Offset, Object_Size.Y.Scale, Object_Size.Y.Offset+ExpandSize)
 		local ScrollPosition = UDim2.new(Object_Position.X.Scale, Object_Position.X.Offset, Object_Position.Y.Scale, Object_Position.Y.Offset-(ExpandSize/2))
 		Button:TweenSizeAndPosition(ScrollSize, ScrollPosition, "Out", "Quad", 0.25, true)		
@@ -244,7 +244,7 @@ function FunctionTable.Create_OverflowMenu_TextButton(Object_Name, Object_Direct
 		for x = 1, #Items do
 			local Item = Items[x]
 			if (Item:IsA("ImageButton")) then
-				Item.MouseButton1Click:connect(function()
+				Item.MouseButton1Click:Connect(function()
 					ButtonValue.Value = tostring(Item.Parent.Frame.Frame[Item.Name].Text)
 					Button.Text = ButtonValue.Value
 					Button:TweenSizeAndPosition(Object_Size, Object_Position, "Out", "Quad", 0.25, true)
@@ -430,7 +430,7 @@ function FunctionTable.Create_Indicator_Bar(Object_Name, Object_Directory, Objec
 		Bar.BackgroundTransparency = 0.6
 		Bar.BorderSizePixel = 0
 		Bar.BackgroundColor3 = Color3.new(1,1,1)
-		Indicator_Value.Changed:connect(function()
+		Indicator_Value.Changed:Connect(function()
 		local Percentage = (Indicator_Value.Value / Indicator_Value.MaxValue)
 		Bar:TweenSize(UDim2.new(Percentage,0,1,0),"Out","Quad",0.125,true)
 		end)
@@ -451,7 +451,7 @@ function FunctionTable.Create_Indicator_Bar(Object_Name, Object_Directory, Objec
 		Bar.BackgroundTransparency = 0.6
 		Bar.BorderSizePixel = 0
 		Bar.BackgroundColor3 = Color3.new(1,1,1)
-		Indicator_Value.Changed:connect(function()
+		Indicator_Value.Changed:Connect(function()
 		local Percentage = (Indicator_Value.Value / Indicator_Value.MaxValue)
 		Bar:TweenSize(UDim2.new(Percentage,0,1,0),"Out","Quad",0.125,true)
 		end)
@@ -547,7 +547,7 @@ function FunctionTable.Create_TabbedMenu(Object_Name, Object_Directory, Object_S
 		ItemContainer.BackgroundColor3 = Color3.new(0,0,0)
 		ItemContainer.BackgroundTransparency = 0.75
 		ItemContainer.BorderSizePixel = 0
-		MenuButton.MouseEnter:connect(function()
+		MenuButton.MouseEnter:Connect(function()
 			if (Selected ~= ItemContainer) then
 			ItemContainer:TweenPosition(UDim2.new(0,0,0.75,75), "Out", "Quint", 0.25, true)
 				if (Selected~=nil) then
@@ -555,7 +555,7 @@ function FunctionTable.Create_TabbedMenu(Object_Name, Object_Directory, Object_S
 				end
 			end
 		end)
-		MenuButton.MouseLeave:connect(function()
+		MenuButton.MouseLeave:Connect(function()
 			if (Selected ~= ItemContainer) then
 			ItemContainer:TweenPosition(UDim2.new(0,0,1,75), "Out", "Quint", 0.25, true)
 				if (Selected~=nil) then
@@ -563,7 +563,7 @@ function FunctionTable.Create_TabbedMenu(Object_Name, Object_Directory, Object_S
 				end
 			end
 		end)
-		MenuButton.MouseButton1Click:connect(function()
+		MenuButton.MouseButton1Click:Connect(function()
 			if (Selected ~= ItemContainer) then 
 			Selected:TweenPosition(UDim2.new(0,0,1,0), "Out", "Quint", 0.4, true)
 			Selected = ItemContainer
@@ -643,7 +643,7 @@ FunctionTable["Create_DynamicList_Scroll"] = function(Object_Name, Object_Direct
 			end
 		end)
 	local InFrame = false
-	Frame.MouseEnter:connect(function()
+	Frame.MouseEnter:Connect(function()
 		InFrame = true
 		while InFrame do
 		if (not InFrame) then break end
@@ -651,7 +651,7 @@ FunctionTable["Create_DynamicList_Scroll"] = function(Object_Name, Object_Direct
 		wait(1/30)
 		end
 	end)
-	Frame.MouseLeave:connect(function()
+	Frame.MouseLeave:Connect(function()
 		InFrame = false
 		Container:TweenPosition(UDim2.new(0,0,0,0), "Out", "Quint", 0.4, true)
 	end)
@@ -734,7 +734,7 @@ function FunctionTable.Create_DynamicList_Fixed(Object_Name, Object_Directory, O
 			end
 			end
 		end)
-		--[[NewChild.Event:connect(function()
+		--[[NewChild.Event:Connect(function()
 			local Oldshit = Container:GetChildren()
 			for x = 1, #Oldshit do
 				if (OldShit[x]:IsA("TextLabel")) then
@@ -831,14 +831,14 @@ function FunctionTable.Create_ScrollList_Image(Object_Name, Object_Directory, Ob
 			Button_CodeConnection.Disabled = false
 			ButtonPos = (ButtonPos+Difference)
 			VisualPos = (VisualPos+VisualDifference)
-			NewButton.MouseEnter:connect(function()
+			NewButton.MouseEnter:Connect(function()
 				VisualFrame:TweenPosition(UDim2.new(0,0,(-0.25*(VisualFrame[NewButton.Name].ItemNumber.Value)),0), "Out", "Quad", 0.25, true)
 				VisualFrame[NewButton.Name]:TweenSize(CenterSize, "Out", "Quad", 0.25, true)
 				if (Item_Names) then
 					VisualFrame[NewButton.Name].ItemName.TextTransparency = 0
 				end
 			end)
-			NewButton.MouseLeave:connect(function()
+			NewButton.MouseLeave:Connect(function()
 				VisualFrame[NewButton.Name]:TweenSize(OtherSize, "Out", "Quad", 0.25, true)
 				if (Item_Names) then
 					VisualFrame[NewButton.Name].ItemName.TextTransparency = 0.75
@@ -910,14 +910,14 @@ function FunctionTable.Create_ScrollList_Image(Object_Name, Object_Directory, Ob
 			Button_CodeConnection.Disabled = false
 			ButtonPos = (ButtonPos+Difference)
 			VisualPos = (VisualPos+VisualDifference)
-			NewButton.MouseEnter:connect(function()
+			NewButton.MouseEnter:Connect(function()
 				VisualFrame:TweenPosition(UDim2.new(0,0,(-0.25*(VisualFrame[NewButton.Name].ItemNumber.Value)),0), "Out", "Quad", 0.25, true)
 				VisualFrame[NewButton.Name]:TweenSize(CenterSize, "Out", "Quad", 0.25, true)
 				if (Item_Names) then
 					VisualFrame[NewButton.Name].ItemName.TextTransparency = 0
 				end
 			end)
-			NewButton.MouseLeave:connect(function()
+			NewButton.MouseLeave:Connect(function()
 				VisualFrame[NewButton.Name]:TweenSize(OtherSize, "Out", "Quad", 0.25, true)
 				if (Item_Names) then
 					VisualFrame[NewButton.Name].ItemName.TextTransparency = 0.75
@@ -985,7 +985,7 @@ function FunctionTable.Create_ScrollList_Text(Object_Name, Object_Directory, Obj
 			NewButton.Size = UDim2.new(1,0,Difference,0)
 			NewButton.ZIndex = Object_ZIndex
 			ButtonPos = ButtonPos + Difference
-			NewButton.MouseEnter:connect(function()
+			NewButton.MouseEnter:Connect(function()
 				local VisText = TextContainer[NewButton.Name]
 				if (not VisText) then return end
 				TextContainer:TweenPosition(UDim2.new(0,0,(-(VisText["ItemNumber"].Value/10)+0.1),0),"Out","Quad",0.25,true)
@@ -993,7 +993,7 @@ function FunctionTable.Create_ScrollList_Text(Object_Name, Object_Directory, Obj
 				VisText.TextTransparency = 0
 				wait(0)
 			end)
-			NewButton.MouseLeave:connect(function()
+			NewButton.MouseLeave:Connect(function()
 				TextContainer[NewButton.Name].FontSize = "Size14"
 				TextContainer[NewButton.Name].TextTransparency = 0.75
 				wait(0)
@@ -1062,7 +1062,7 @@ function FunctionTable.Create_ScrollList_Text(Object_Name, Object_Directory, Obj
 			NewButton.Size = UDim2.new(1,0,Difference,0)
 			NewButton.ZIndex = Object_ZIndex
 			ButtonPos = ButtonPos + Difference
-			NewButton.MouseEnter:connect(function()
+			NewButton.MouseEnter:Connect(function()
 				local VisText = TextContainer[NewButton.Name]
 				if (not VisText) then return end
 				TextContainer:TweenPosition(UDim2.new(0,0,(-(VisText["ItemNumber"].Value/10)+0.1),0),"Out","Quad",0.25,true)
@@ -1070,7 +1070,7 @@ function FunctionTable.Create_ScrollList_Text(Object_Name, Object_Directory, Obj
 				VisText.TextTransparency = 0
 				wait(0)
 			end)
-			NewButton.MouseLeave:connect(function()
+			NewButton.MouseLeave:Connect(function()
 				TextContainer[NewButton.Name].FontSize = "Size14"
 				TextContainer[NewButton.Name].TextTransparency = 0.75
 				wait(0)
