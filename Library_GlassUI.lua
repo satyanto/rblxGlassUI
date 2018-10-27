@@ -42,7 +42,7 @@ repeat wait() until Mouse
 
 local FunctionTable = {}
 
-FunctionTable["Create_MenuBar"] = function(Object_Name, Object_Directory, Menu_Width, Item_Table, Item_Button_Directory, Return_Object)
+function FunctionTable.Create_MenuBar(Object_Name, Object_Directory, Menu_Width, Item_Table, Item_Button_Directory, Return_Object)
 	local FrameContainer = Instance.new("Frame", Object_Directory)
 	FrameContainer.Name = tostring(Object_Name)
 	FrameContainer.Size = UDim2.new(tonumber(Menu_Width),0,1,0)
@@ -133,7 +133,7 @@ FunctionTable["Create_MenuBar"] = function(Object_Name, Object_Directory, Menu_W
 	end
 end
 
-FunctionTable["Create_Frame"] = function(Object_Name, Object_Directory, Object_Size, Object_Position, Object_ZIndex, Contain, Return_Object)
+function FunctionTable.Create_Frame(Object_Name, Object_Directory, Object_Size, Object_Position, Object_ZIndex, Contain, Return_Object)
 	local NewFrame = Instance.new("Frame", Object_Directory)
 	NewFrame.Size = Object_Size
 	NewFrame.Position = Object_Position
@@ -185,7 +185,7 @@ FunctionTable["Create_Frame"] = function(Object_Name, Object_Directory, Object_S
 	end
 end
 
-FunctionTable["Create_TextButton"] = function(Object_Name, Button_Text, Object_Directory, Object_Size, Object_Position, Object_ZIndex)
+function FunctionTable.Create_TextButton(Object_Name, Button_Text, Object_Directory, Object_Size, Object_Position, Object_ZIndex)
 	local Button = Instance.new("TextButton", Object_Directory)
 	Button.Name = tostring(Object_Name)
 	Button.Size = Object_Size
@@ -230,7 +230,7 @@ FunctionTable["Create_TextButton"] = function(Object_Name, Button_Text, Object_D
 	return Button
 end
 
-FunctionTable["Create_OverflowMenu_TextButton"] = function(Object_Name, Object_Directory, Object_Size, Object_Position, Object_ZIndex, MenuOptions, ExpandSize)
+function FunctionTable.Create_OverflowMenu_TextButton(Object_Name, Object_Directory, Object_Size, Object_Position, Object_ZIndex, MenuOptions, ExpandSize)
 	local Button = FunctionTable["Create_TextButton"](tostring(Object_Name), tostring(MenuOptions[1][2]), Object_Directory, Object_Size, Object_Position, Object_ZIndex)
 	local ButtonValue = Instance.new("StringValue", Button)
 	ButtonValue.Name = "Value"
@@ -256,7 +256,7 @@ FunctionTable["Create_OverflowMenu_TextButton"] = function(Object_Name, Object_D
 	return Button, ButtonValue
 end
 
-FunctionTable["Create_LoadBar_Continuous"] = function(Object_Name, Object_Directory, Object_Size, Object_Position, Object_ZIndex, Delay, FadeIn, Speed)
+function FunctionTable.Create_LoadBar_Continuous(Object_Name, Object_Directory, Object_Size, Object_Position, Object_ZIndex, Delay, FadeIn, Speed)
 	local Container = Instance.new("Frame", Object_Directory)
 	Container.Name = tostring(Object_Name)
 	Container.Size = Object_Size
@@ -357,15 +357,15 @@ FunctionTable["Create_LoadBar_Continuous"] = function(Object_Name, Object_Direct
 	end
 end
 
-FunctionTable["Create_LoadBar_Fixed"] = function(Object_Name, Object_Directory, Object_Size, Object_Position, Delay, FadeIn, LoadPercent)
+function FunctionTable.Create_LoadBar_Fixed(Object_Name, Object_Directory, Object_Size, Object_Position, Delay, FadeIn, LoadPercent)
 	
 end
 
-FunctionTable["Create_LoadCircle"] = function(Object_Name, Object_Directory, Object_Size, Object_Position, Delay, FadeIn)
+function FunctionTable.Create_LoadCircle(Object_Name, Object_Directory, Object_Size, Object_Position, Delay, FadeIn)
 	
 end
 
-FunctionTable["Create_Slider"] = function(Object_Name, Object_Directory, Object_Size, Object_Position, Object_ZIndex, Create_Container, Maximum, Minimum, Steps, Value)
+function FunctionTable.Create_Slider(Object_Name, Object_Directory, Object_Size, Object_Position, Object_ZIndex, Create_Container, Maximum, Minimum, Steps, Value)
 	if (Create_Container) then
 		repeat wait() until FunctionTable.Create_Frame
 		local Container = FunctionTable.Create_Frame(Object_Name, Object_Directory, Object_Size, Object_Position, Object_ZIndex, true, true)
@@ -410,7 +410,7 @@ FunctionTable["Create_Slider"] = function(Object_Name, Object_Directory, Object_
 	end
 end
 
-FunctionTable["Create_Indicator_Bar"] = function(Object_Name, Object_Directory, Object_Size, Object_Position, Create_Container, Indicator_Value, Include_Tag, Object_ZIndex, Return_Object)
+function FunctionTable.Create_Indicator_Bar(Object_Name, Object_Directory, Object_Size, Object_Position, Create_Container, Indicator_Value, Include_Tag, Object_ZIndex, Return_Object)
 	if (Create_Container) then
 		repeat wait() until FunctionTable.Create_Frame
 		local Container = FunctionTable.Create_Frame(Object_Name, Object_Directory, Object_Size, Object_Position, Object_ZIndex, true, true)
@@ -511,7 +511,7 @@ FunctionTable["Create_Notification"] = function(Notification_Title, Notification
 	end)
 end
 
-FunctionTable["Create_TabbedMenu"] = function(Object_Name, Object_Directory, Object_Size, Object_Position, Object_ZIndex, Menu_Option_Table)
+function FunctionTable.Create_TabbedMenu(Object_Name, Object_Directory, Object_Size, Object_Position, Object_ZIndex, Menu_Option_Table)
 	local Container = FunctionTable.Create_Frame(tostring(Object_Name), Object_Directory, Object_Size, Object_Position, Object_ZIndex, true, true)
 	local MenuTabs = Instance.new("Frame", Container)
 	MenuTabs.Size = UDim2.new(1,0,0,75)	
@@ -658,7 +658,7 @@ FunctionTable["Create_DynamicList_Scroll"] = function(Object_Name, Object_Direct
 	end
 end
 
-FunctionTable["Create_DynamicList_Fixed"] = function(Object_Name, Object_Directory, Object_Size, Object_Position, Create_Container, List_Table, Object_ZIndex, Return_Objects, Add_Direction)
+function FunctionTable.Create_DynamicList_Fixed(Object_Name, Object_Directory, Object_Size, Object_Position, Create_Container, List_Table, Object_ZIndex, Return_Objects, Add_Direction)
 	local TableNo = #List_Table
 	--[[local NewChild = Instance.new("BindableEvent", game:GetService("Players").LocalPlayer)
 	setmetatable(Table, {
@@ -760,7 +760,7 @@ FunctionTable["Create_DynamicList_Fixed"] = function(Object_Name, Object_Directo
 	
 end
 
-FunctionTable["Create_ScrollList_Image"] = function(Object_Name, Object_Directory, Object_Size, Object_Position, Create_Container, Item_Table, Object_ZIndex, Item_Names, Item_Button_Directory, Contain, Return_Objects)
+function FunctionTable.Create_ScrollList_Image(Object_Name, Object_Directory, Object_Size, Object_Position, Create_Container, Item_Table, Object_ZIndex, Item_Names, Item_Button_Directory, Contain, Return_Objects)
 	if (Create_Container) then
 		repeat wait() until FunctionTable.Create_Frame
 		local Container = FunctionTable.Create_Frame(tostring(Object_Name), Object_Directory, Object_Size, Object_Position, Object_ZIndex, true, true)
@@ -927,7 +927,7 @@ FunctionTable["Create_ScrollList_Image"] = function(Object_Name, Object_Director
 	end
 end
 
-FunctionTable["Create_ScrollList_Text"] = function(Object_Name, Object_Directory, Object_Size, Object_Position, Create_Container, Item_Table, Object_ZIndex, Item_Button_Directory, Contain, Return_Objects)
+function FunctionTable.Create_ScrollList_Text(Object_Name, Object_Directory, Object_Size, Object_Position, Create_Container, Item_Table, Object_ZIndex, Item_Button_Directory, Contain, Return_Objects)
 	if (Create_Container) then
 		repeat wait() until FunctionTable.Create_Frame
 		local Container = FunctionTable.Create_Frame(tostring(Object_Name), Object_Directory, Object_Size, Object_Position, Object_ZIndex, true, true)
