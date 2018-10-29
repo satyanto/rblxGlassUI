@@ -99,10 +99,12 @@ function FunctionTable.Create_MenuBar(Object_Name, Object_Directory, Menu_Width,
 		NewText.Font = "SourceSans"
 		NewText.FontSize = "Size18"
 		NewText.Text = tostring(Item_Table[x][2])
+
 		local NumberTag = Instance.new("NumberValue", NewText)
 		NumberTag.Name = "ItemNumber"
 		NumberTag.Value = x
 		TextPos = TextPos + TextPosDifference
+
 		local NewButton = Instance.new("ImageButton", FrameContainer)
 		NewButton.Name = tostring(Item_Table[x][2])
 		NewButton.BackgroundTransparency = 2
@@ -110,7 +112,9 @@ function FunctionTable.Create_MenuBar(Object_Name, Object_Directory, Menu_Width,
 		NewButton.Position = UDim2.new(0,0,ButtonPos,0)
 		NewButton.Size = UDim2.new(1,0,Difference,0)
 		NewButton.ZIndex = 9
+
 		ButtonPos = ButtonPos + Difference
+
 		NewButton.MouseEnter:Connect(function()
 			local VisText = TextContainer[NewButton.Name]
 			if (not VisText) then return end
@@ -118,10 +122,12 @@ function FunctionTable.Create_MenuBar(Object_Name, Object_Directory, Menu_Width,
 			VisText.FontSize = "Size36"
 			wait(0)
 		end)
+
 		NewButton.MouseLeave:Connect(function()
 			TextContainer[NewButton.Name].FontSize = "Size14"
 			wait(0)
 		end)
+
 		local Button_CodeConnection = Item_Button_Directory[Item_Table[x][1]]:Clone()
 		Button_CodeConnection.Parent = NewButton
 		Button_CodeConnection.Disabled = false
@@ -194,15 +200,16 @@ function FunctionTable.Create_TextButton(Object_Name, Button_Text, Object_Direct
 	Button.BackgroundColor3 = Color3.new(0,0,0)
 	Button.Text = tostring(Button_Text)
 	Button.FontSize = "Size24"
-		if (not Button.TextFits) then
+	if (not Button.TextFits) then
 		Button.TextScaled = true
-		else 
+	else 
 		Button.TextScaled = false
-		end
+	end
 	Button.TextXAlignment = "Center"
 	Button.TextYAlignment = "Center"
 	Button.TextColor3 = Color3.new(1,1,1)
 	Button.Font = "SourceSans"
+
 	local Ylight = Instance.new("Frame", Button)
 	Ylight.BorderSizePixel = 0
 	Ylight.Size = UDim2.new(0,0,0,0)
@@ -210,6 +217,7 @@ function FunctionTable.Create_TextButton(Object_Name, Button_Text, Object_Direct
 	Ylight.BackgroundTransparency = 0.4
 	Ylight.BackgroundColor3 = Color3.new(1,1,1)
 	Ylight.ZIndex = Object_ZIndex
+
 	local Highlight = Instance.new("Frame", Button)
 	Highlight.BorderSizePixel = 0
 	Highlight.Position = UDim2.new(0.5,0,0.5,0)
@@ -217,14 +225,17 @@ function FunctionTable.Create_TextButton(Object_Name, Button_Text, Object_Direct
 	Highlight.BackgroundTransparency = 0.8
 	Highlight.BackgroundColor3 = Color3.new(0,0,0)
 	Highlight.ZIndex = Object_ZIndex
+
 	Button.MouseEnter:Connect(function()
 		Ylight:TweenSizeAndPosition(UDim2.new(0,2,1,0), UDim2.new(0,-2,0,0), "Out", "Quad", 0.2, true)
 		Highlight:TweenSizeAndPosition(UDim2.new(1,0,1,0), UDim2.new(0,0,0,0), "Out", "Quad", 0.2, true)
 	end)
+
 	Button.MouseLeave:Connect(function()
 		Ylight:TweenSizeAndPosition(UDim2.new(0,0,0,0), UDim2.new(0,-2,0.5,0), "Out", "Quad", 0.2, true)
 		Highlight:TweenSizeAndPosition(UDim2.new(1,0,0,0), UDim2.new(0,0,0.5,0), "Out", "Quad", 0.2, true)
 	end)
+
 	return Button
 end
 
@@ -264,6 +275,7 @@ function FunctionTable.Create_LoadBar_Continuous(Object_Name, Object_Directory, 
 	Container.ZIndex = tonumber(Object_ZIndex)
 	Container.Visible = false
 	Container.ClipsDescendants = true
+
 	local B1 = Instance.new("Frame", Container)
 	B1.BackgroundColor3 = Color3.new(1,1,1)
 	B1.Visible = false
@@ -271,6 +283,7 @@ function FunctionTable.Create_LoadBar_Continuous(Object_Name, Object_Directory, 
 	B1.Position = UDim2.new(0,-50,0,0)
 	B1.BorderSizePixel = 0
 	B1.ZIndex = Object_ZIndex
+
 	local B2 = Instance.new("Frame", Container)
 	B2.BackgroundColor3 = Color3.new(1,1,1)
 	B2.Visible = false
@@ -278,6 +291,7 @@ function FunctionTable.Create_LoadBar_Continuous(Object_Name, Object_Directory, 
 	B2.Position = UDim2.new(0,-50,0,0)
 	B2.BorderSizePixel = 0
 	B2.ZIndex = tonumber(Object_ZIndex)
+
 	local B3 = Instance.new("Frame", Container)
 	B3.BackgroundColor3 = Color3.new(1,1,1)
 	B3.Visible = false
@@ -285,6 +299,7 @@ function FunctionTable.Create_LoadBar_Continuous(Object_Name, Object_Directory, 
 	B3.Position = UDim2.new(0,-50,0,0)
 	B3.BorderSizePixel = 0
 	B3.ZIndex = tonumber(Object_ZIndex)
+
 	local B4 = Instance.new("Frame", Container)
 	B4.BackgroundColor3 = Color3.new(1,1,1)
 	B4.Visible = false
@@ -292,6 +307,7 @@ function FunctionTable.Create_LoadBar_Continuous(Object_Name, Object_Directory, 
 	B4.Position = UDim2.new(0,-50,0,0)
 	B4.BorderSizePixel = 0
 	B4.ZIndex = tonumber(Object_ZIndex)
+
 	Spawn(function()
 		while wait(Speed/2) do
 			B1.Position = UDim2.new(0,-50,0,0)
@@ -367,6 +383,7 @@ function FunctionTable.Create_Slider(Object_Name, Object_Directory, Object_Size,
 	if (Create_Container) then
 		repeat wait() until FunctionTable.Create_Frame
 		local Container = FunctionTable.Create_Frame(Object_Name, Object_Directory, Object_Size, Object_Position, Object_ZIndex, true, true)
+
 		local Line = Instance.new("Frame", Container)
 		Line.BorderSizePixel = 0
 		Line.ZIndex = Object_ZIndex
@@ -374,6 +391,7 @@ function FunctionTable.Create_Slider(Object_Name, Object_Directory, Object_Size,
 		Line.BackgroundColor3 = Color3.new(1,1,1)
 		Line.Size = UDim2.new(1,-20,0,2)
 		Line.Position = UDim2.new(0,10,0.5,-1)
+
 		local MinStep = Instance.new("Frame", Line)
 		MinStep.Position = UDim2.new(0,0,-1,0)
 		MinStep.Size = UDim2.new(0,2,2,0)
@@ -381,6 +399,7 @@ function FunctionTable.Create_Slider(Object_Name, Object_Directory, Object_Size,
 		MinStep.BackgroundTransparency = 0.2
 		MinStep.BackgroundColor3 = Color3.new(1,1,1)
 		MinStep.ZIndex = Object_ZIndex
+
 		local MaxStep = Instance.new("Frame", Line)
 		MaxStep.Position = UDim2.new(1,-2,-1,0)
 		MaxStep.Size = UDim2.new(0,2,2,0)
@@ -388,6 +407,7 @@ function FunctionTable.Create_Slider(Object_Name, Object_Directory, Object_Size,
 		MaxStep.BackgroundTransparency = 0.2
 		MaxStep.BackgroundColor3 = Color3.new(1,1,1)
 		MaxStep.ZIndex = Object_ZIndex
+
 		local StepValues = {}
 		table.insert(StepValues, Minimum)
 		for x = 1, Steps do
@@ -429,8 +449,8 @@ function FunctionTable.Create_Indicator_Bar(Object_Name, Object_Directory, Objec
 		Bar.BorderSizePixel = 0
 		Bar.BackgroundColor3 = Color3.new(1,1,1)
 		Indicator_Value.Changed:Connect(function()
-		local Percentage = (Indicator_Value.Value / Indicator_Value.MaxValue)
-		Bar:TweenSize(UDim2.new(Percentage,0,1,0),"Out","Quad",0.125,true)
+			local Percentage = (Indicator_Value.Value / Indicator_Value.MaxValue)
+			Bar:TweenSize(UDim2.new(Percentage,0,1,0),"Out","Quad",0.125,true)
 		end)
 	else
 		local IndicatorFrame = Instance.new("Frame", Object_Directory)
@@ -450,13 +470,13 @@ function FunctionTable.Create_Indicator_Bar(Object_Name, Object_Directory, Objec
 		Bar.BorderSizePixel = 0
 		Bar.BackgroundColor3 = Color3.new(1,1,1)
 		Indicator_Value.Changed:Connect(function()
-		local Percentage = (Indicator_Value.Value / Indicator_Value.MaxValue)
-		Bar:TweenSize(UDim2.new(Percentage,0,1,0),"Out","Quad",0.125,true)
+			local Percentage = (Indicator_Value.Value / Indicator_Value.MaxValue)
+			Bar:TweenSize(UDim2.new(Percentage,0,1,0),"Out","Quad",0.125,true)
 		end)
 	end
 end
 
-FunctionTable["Create_Notification"] = function(Notification_Title, Notification_Description, Duration)
+function FunctionTable.Create_Notification(Notification_Title, Notification_Description, Duration)
 	repeat wait() until FunctionTable.Create_Frame
 	local TemporaryUI = Instance.new("ScreenGui", game:GetService("Players").LocalPlayer.PlayerGui)
 	local Container = FunctionTable.Create_Frame("Notification", TemporaryUI, UDim2.new(0,0,0,0), UDim2.new(0,0,0,0), 10, true, true)
@@ -489,6 +509,7 @@ FunctionTable["Create_Notification"] = function(Notification_Title, Notification
 	Description.TextScaled = true
 	Description.TextTransparency = 1
 	Description.TextWrapped = true
+
 	Container:TweenSizeAndPosition(UDim2.new(0.2,0,0.2,0), UDim2.new(0.4,0,0.05,0),"Out","Quad",0.5,true)	
 	Spawn(function()
 		wait(0.15)
@@ -537,6 +558,7 @@ function FunctionTable.Create_TabbedMenu(Object_Name, Object_Directory, Object_S
 	for x = 1, #Menu_Option_Table do
 		local MenuButton = FunctionTable.Create_TextButton(tostring(Menu_Option_Table[x][1]), tostring(Menu_Option_Table[x][2]), MenuTabs, UDim2.new(Dif,0,0.8,0), UDim2.new(((Dif*x)-Dif),0,0.1,0), Object_ZIndex)
 		--local ItemContainer = FunctionTable.Create_Frame(tostring(Menu_Option_Table[x][1]), Container, UDim2.new(1,0,1,-75), UDim2.new(0,0,0,-1), Object_ZIndex, true, true)
+		
 		local ItemContainer = Instance.new("Frame", Container)
 		ItemContainer.Name = tostring(Menu_Option_Table[x][1])
 		ItemContainer.Size = UDim2.new(1,0,1,-75)		
@@ -545,6 +567,7 @@ function FunctionTable.Create_TabbedMenu(Object_Name, Object_Directory, Object_S
 		ItemContainer.BackgroundColor3 = Color3.new(0,0,0)
 		ItemContainer.BackgroundTransparency = 0.75
 		ItemContainer.BorderSizePixel = 0
+
 		MenuButton.MouseEnter:Connect(function()
 			if (Selected ~= ItemContainer) then
 			ItemContainer:TweenPosition(UDim2.new(0,0,0.75,75), "Out", "Quint", 0.25, true)
@@ -553,6 +576,7 @@ function FunctionTable.Create_TabbedMenu(Object_Name, Object_Directory, Object_S
 				end
 			end
 		end)
+
 		MenuButton.MouseLeave:Connect(function()
 			if (Selected ~= ItemContainer) then
 			ItemContainer:TweenPosition(UDim2.new(0,0,1,75), "Out", "Quint", 0.25, true)
@@ -561,6 +585,7 @@ function FunctionTable.Create_TabbedMenu(Object_Name, Object_Directory, Object_S
 				end
 			end
 		end)
+
 		MenuButton.MouseButton1Click:Connect(function()
 			if (Selected ~= ItemContainer) then 
 			Selected:TweenPosition(UDim2.new(0,0,1,0), "Out", "Quint", 0.4, true)
@@ -575,7 +600,7 @@ function FunctionTable.Create_TabbedMenu(Object_Name, Object_Directory, Object_S
 	SelectBar:TweenPosition(UDim2.new(MenuTabs[Selected.Name].Position.X.Scale, 0, 1, -5), "Out", "Quad", 0.25, true)
 end
 
-FunctionTable["Create_DynamicList_Scroll"] = function(Object_Name, Object_Directory, Object_Size, Object_Position, Create_Container, List_Table, Object_ZIndex, Return_Objects, Add_Direction)
+function FunctionTable.Create_DynamicList_Scroll(Object_Name, Object_Directory, Object_Size, Object_Position, Create_Container, List_Table, Object_ZIndex, Return_Objects, Add_Direction)
 	local TableNo = #List_Table
 	if (Create_Container) then
 		local Frame = FunctionTable.Create_Frame(tostring(Object_Name), Object_Directory, Object_Size, Object_Position, Object_ZIndex, true, true)
@@ -586,73 +611,73 @@ FunctionTable["Create_DynamicList_Scroll"] = function(Object_Name, Object_Direct
 		Container.ZIndex = Object_ZIndex
 		Spawn(function()
 			if (Add_Direction == "Downward") then
-			while wait(1) do
-				if (#List_Table > TableNo) then
-					TableNo = #List_Table
-					local OldShit = Container:GetChildren()
-					for x = 1, #OldShit do
-						if (OldShit[x]:IsA("TextLabel")) then
-							OldShit[x]:TweenPosition(UDim2.new(0,0,0,OldShit[x].Position.Y.Offset + 50), "Out", "Quint", 0.5, true)
-						end
-					end
-					local Label = Instance.new("TextLabel", Container)
-					Label.BackgroundTransparency = 1
-					Label.Size = UDim2.new(1,0,0,50)
-					Label.Position = UDim2.new(-1,0,0,0)
-					Label.BorderSizePixel = 0
-					Label.Text = tostring(List_Table[TableNo])
-					Label.FontSize = "Size24"
-					if (not Label.TextFits) then
-						Label.TextScaled = true
-					end
-					Label.TextColor3 = Color3.new(1,1,1)
-					Label.Font = "SourceSans"
-					Label:TweenPosition(UDim2.new(0,0,0,0), "Out", "Quad", 0.35, true)
-				end
-			end
-			elseif (Add_Direction == "Upward") then
-			while wait(1) do
-				if (#List_Table > TableNo) then
-					TableNo = #List_Table
-					local OldShit = Container:GetChildren()
-					for x = 1, #OldShit do
-						if (OldShit[x]:IsA("TextLabel")) then
-							if (OldShit[x].Position.Y.Scale <= -0.5) then
-								OldShit[x]:Destroy()
+				while wait(1) do
+					if (#List_Table > TableNo) then
+						TableNo = #List_Table
+						local OldStuff = Container:GetChildren()
+						for x = 1, #OldStuff do
+							if (OldStuff[x]:IsA("TextLabel")) then
+								OldStuff[x]:TweenPosition(UDim2.new(0,0,0,OldStuff[x].Position.Y.Offset + 50), "Out", "Quint", 0.5, true)
 							end
-							OldShit[x]:TweenPosition(UDim2.new(0,0,1,OldShit[x].Position.Y.Offset - 50), "Out", "Quint", 0.5, true)
 						end
+						local Label = Instance.new("TextLabel", Container)
+						Label.BackgroundTransparency = 1
+						Label.Size = UDim2.new(1,0,0,50)
+						Label.Position = UDim2.new(-1,0,0,0)
+						Label.BorderSizePixel = 0
+						Label.Text = tostring(List_Table[TableNo])
+						Label.FontSize = "Size24"
+						if (not Label.TextFits) then
+							Label.TextScaled = true
+						end
+						Label.TextColor3 = Color3.new(1,1,1)
+						Label.Font = "SourceSans"
+						Label:TweenPosition(UDim2.new(0,0,0,0), "Out", "Quad", 0.35, true)
 					end
-					local Label = Instance.new("TextLabel", Container)
-					Label.BackgroundTransparency = 1
-					Label.Size = UDim2.new(1,0,0,50)
-					Label.Position = UDim2.new(-1,0,1,-50)
-					Label.BorderSizePixel = 0
-					Label.Text = tostring(List_Table[TableNo])
-					Label.FontSize = "Size24"
-					if (not Label.TextFits) then
-						Label.TextScaled = true
-					end
-					Label.TextColor3 = Color3.new(1,1,1)
-					Label.Font = "SourceSans"
-					Label:TweenPosition(UDim2.new(0,0,1,-50), "Out", "Quad", 0.35, true)
 				end
-			end
+			elseif (Add_Direction == "Upward") then
+				while wait(1) do
+					if (#List_Table > TableNo) then
+						TableNo = #List_Table
+						local OldStuff = Container:GetChildren()
+						for x = 1, #OldStuff do
+							if (OldStuff[x]:IsA("TextLabel")) then
+								if (OldStuff[x].Position.Y.Scale <= -0.5) then
+									OldStuff[x]:Destroy()
+								end
+								OldStuff[x]:TweenPosition(UDim2.new(0,0,1,OldStuff[x].Position.Y.Offset - 50), "Out", "Quint", 0.5, true)
+							end
+						end
+						local Label = Instance.new("TextLabel", Container)
+						Label.BackgroundTransparency = 1
+						Label.Size = UDim2.new(1,0,0,50)
+						Label.Position = UDim2.new(-1,0,1,-50)
+						Label.BorderSizePixel = 0
+						Label.Text = tostring(List_Table[TableNo])
+						Label.FontSize = "Size24"
+						if (not Label.TextFits) then
+							Label.TextScaled = true
+						end
+						Label.TextColor3 = Color3.new(1,1,1)
+						Label.Font = "SourceSans"
+						Label:TweenPosition(UDim2.new(0,0,1,-50), "Out", "Quad", 0.35, true)
+					end
+				end
 			end
 		end)
-	local InFrame = false
-	Frame.MouseEnter:Connect(function()
-		InFrame = true
-		while InFrame do
-		if (not InFrame) then break end
-		Container.Position = UDim2.new(0,0,0,(Container.AbsoluteSize.Y - UserInputService.GetMouseLocation().Y))
-		wait(1/30)
-		end
-	end)
-	Frame.MouseLeave:Connect(function()
-		InFrame = false
-		Container:TweenPosition(UDim2.new(0,0,0,0), "Out", "Quint", 0.4, true)
-	end)
+		local InFrame = false
+		Frame.MouseEnter:Connect(function()
+			InFrame = true
+			while InFrame do
+				if (not InFrame) then break end
+				Container.Position = UDim2.new(0,0,0,(Container.AbsoluteSize.Y - UserInputService.GetMouseLocation().Y))
+				wait(1/30)
+			end
+		end)
+		Frame.MouseLeave:Connect(function()
+			InFrame = false
+			Container:TweenPosition(UDim2.new(0,0,0,0), "Out", "Quint", 0.4, true)
+		end)
 	end
 end
 
@@ -681,10 +706,10 @@ function FunctionTable.Create_DynamicList_Fixed(Object_Name, Object_Directory, O
 			while wait(1) do
 				if (#List_Table > TableNo) then
 					TableNo = #List_Table
-					local OldShit = Container:GetChildren()
-					for x = 1, #OldShit do
-						if (OldShit[x]:IsA("TextLabel")) then
-							OldShit[x]:TweenPosition(UDim2.new(0,0,0,OldShit[x].Position.Y.Offset + 50), "Out", "Quint", 0.5, true)
+					local OldStuff = Container:GetChildren()
+					for x = 1, #OldStuff do
+						if (OldStuff[x]:IsA("TextLabel")) then
+							OldStuff[x]:TweenPosition(UDim2.new(0,0,0,OldStuff[x].Position.Y.Offset + 50), "Out", "Quint", 0.5, true)
 						end
 					end
 					local Label = Instance.new("TextLabel", Container)
@@ -706,13 +731,13 @@ function FunctionTable.Create_DynamicList_Fixed(Object_Name, Object_Directory, O
 			while wait(1) do
 				if (#List_Table > TableNo) then
 					TableNo = #List_Table
-					local OldShit = Container:GetChildren()
-					for x = 1, #OldShit do
-						if (OldShit[x]:IsA("TextLabel")) then
-							if (OldShit[x].Position.Y.Scale <= -0.5) then
-								OldShit[x]:Destroy()
+					local OldStuff = Container:GetChildren()
+					for x = 1, #OldStuff do
+						if (OldStuff[x]:IsA("TextLabel")) then
+							if (OldStuff[x].Position.Y.Scale <= -0.5) then
+								OldStuff[x]:Destroy()
 							end
-							OldShit[x]:TweenPosition(UDim2.new(0,0,1,OldShit[x].Position.Y.Offset - 50), "Out", "Quint", 0.5, true)
+							OldStuff[x]:TweenPosition(UDim2.new(0,0,1,OldStuff[x].Position.Y.Offset - 50), "Out", "Quint", 0.5, true)
 						end
 					end
 					local Label = Instance.new("TextLabel", Container)
@@ -735,8 +760,8 @@ function FunctionTable.Create_DynamicList_Fixed(Object_Name, Object_Directory, O
 		--[[NewChild.Event:Connect(function()
 			local Oldshit = Container:GetChildren()
 			for x = 1, #Oldshit do
-				if (OldShit[x]:IsA("TextLabel")) then
-					OldShit[x]:TweenPosition(UDim2.new(0,0,0,OldShit[x].Position.x.Offset - 50), "Out", "Quint", 0.25, true)
+				if (OldStuff[x]:IsA("TextLabel")) then
+					OldStuff[x]:TweenPosition(UDim2.new(0,0,0,OldStuff[x].Position.x.Offset - 50), "Out", "Quint", 0.25, true)
 				end
 			end
 			local Label = Instance.new("TextLabel", Container)
@@ -805,17 +830,17 @@ function FunctionTable.Create_ScrollList_Image(Object_Name, Object_Directory, Ob
 			ImageLabel.Position = UDim2.new(0,0,0,0)
 			ImageLabel.ZIndex = Object_ZIndex
 				if (Item_Names) then
-				local ImageName = Instance.new("TextLabel", ImageFrame)
-				ImageName.BackgroundTransparency = 2
-				ImageName.BorderSizePixel = 0
-				ImageName.Name = "ItemName"
-				ImageName.Position = UDim2.new(0.1,0,0,0)
-				ImageName.Size = UDim2.new(1,0,1,0)
-				ImageName.Text = Item_Table[x][2]
-				ImageName.ZIndex = Object_ZIndex
-				ImageName.Font = "SourceSans"
-				ImageName.FontSize = "Size18"
-				ImageName.TextColor3 = Color3.new(1,1,1)
+					local ImageName = Instance.new("TextLabel", ImageFrame)
+					ImageName.BackgroundTransparency = 2
+					ImageName.BorderSizePixel = 0
+					ImageName.Name = "ItemName"
+					ImageName.Position = UDim2.new(0.1,0,0,0)
+					ImageName.Size = UDim2.new(1,0,1,0)
+					ImageName.Text = Item_Table[x][2]
+					ImageName.ZIndex = Object_ZIndex
+					ImageName.Font = "SourceSans"
+					ImageName.FontSize = "Size18"
+					ImageName.TextColor3 = Color3.new(1,1,1)
 				end
 			local NewButton = Instance.new("ImageButton", FrameContainer)
 			NewButton.Name = Item_Table[x][1]
@@ -886,15 +911,15 @@ function FunctionTable.Create_ScrollList_Image(Object_Name, Object_Directory, Ob
 			ImageLabel.Position = UDim2.new(0,0,0,0)
 			ImageLabel.ZIndex = Object_ZIndex
 				if (Item_Names) then
-				local ImageName = Instance.new("TextLabel", ImageFrame)
-				ImageName.BackgroundTransparency = 2
-				ImageName.BorderSizePixel = 0
-				ImageName.Name = "ItemName"
-				ImageName.Text = Item_Table[x][2]
-				ImageName.ZIndex = Object_ZIndex
-				ImageName.Font = "SourceSans"
-				ImageName.FontSize = "Size18"
-				ImageName.TextColor3 = Color3.new(1,1,1)
+					local ImageName = Instance.new("TextLabel", ImageFrame)
+					ImageName.BackgroundTransparency = 2
+					ImageName.BorderSizePixel = 0
+					ImageName.Name = "ItemName"
+					ImageName.Text = Item_Table[x][2]
+					ImageName.ZIndex = Object_ZIndex
+					ImageName.Font = "SourceSans"
+					ImageName.FontSize = "Size18"
+					ImageName.TextColor3 = Color3.new(1,1,1)
 				end
 			local NewButton = Instance.new("ImageButton", FrameContainer)
 			NewButton.Name = Item_Table[x][1]
@@ -997,9 +1022,9 @@ function FunctionTable.Create_ScrollList_Text(Object_Name, Object_Directory, Obj
 				wait(0)
 			end)
 			if (Item_Button_Directory~=nil) then
-			local Button_CodeConnection = Item_Button_Directory[Item_Table[x][1]]:Clone()
-			Button_CodeConnection.Parent = NewButton
-			Button_CodeConnection.Disabled = false
+				local Button_CodeConnection = Item_Button_Directory[Item_Table[x][1]]:Clone()
+				Button_CodeConnection.Parent = NewButton
+				Button_CodeConnection.Disabled = false
 			end
 		end
 		if (Return_Objects) then
