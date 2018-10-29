@@ -308,7 +308,7 @@ function FunctionTable.Create_LoadBar_Continuous(Object_Name, Object_Directory, 
 	B4.BorderSizePixel = 0
 	B4.ZIndex = tonumber(Object_ZIndex)
 
-	Spawn(function()
+	spawn(function()
 		while wait(Speed/2) do
 			B1.Position = UDim2.new(0,-50,0,0)
 			B2.Position = UDim2.new(0,-50,0,0)
@@ -511,7 +511,7 @@ function FunctionTable.Create_Notification(Notification_Title, Notification_Desc
 	Description.TextWrapped = true
 
 	Container:TweenSizeAndPosition(UDim2.new(0.2,0,0.2,0), UDim2.new(0.4,0,0.05,0),"Out","Quad",0.5,true)	
-	Spawn(function()
+	spawn(function()
 		wait(0.15)
 		for x = 1, 0, -0.1 do
 			Title.TextTransparency = x
@@ -609,7 +609,7 @@ function FunctionTable.Create_DynamicList_Scroll(Object_Name, Object_Directory, 
 		Container.Size = UDim2.new(1,0,1,0)
 		Container.Position = UDim2.new(0,0,0,0)
 		Container.ZIndex = Object_ZIndex
-		Spawn(function()
+		spawn(function()
 			if (Add_Direction == "Downward") then
 				while wait(1) do
 					if (#List_Table > TableNo) then
@@ -701,7 +701,7 @@ function FunctionTable.Create_DynamicList_Fixed(Object_Name, Object_Directory, O
 		Container.Size = UDim2.new(1,0,1,0)
 		Container.Position = UDim2.new(0,0,0,0)
 		Container.ZIndex = Object_ZIndex
-		Spawn(function()
+		spawn(function()
 			if (Add_Direction == "Downward") then
 			while wait(1) do
 				if (#List_Table > TableNo) then
