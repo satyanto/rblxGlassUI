@@ -1,7 +1,13 @@
 ![Alt Text](https://i.imgur.com/yT1i9GZ.png)
 # rblxGlassUI
+Glass is an all-in-one UI kit for Roblox, with a focus on modularity, scrolling menus, and efficiency. 
+Scrolling is based on gesture of the mouse upwards/downwards, thus allowing for extremely large amounts of menu items in a relatively small, clean, minimalist user interface. To select an option, a player would click when the text is highlighted / enlarged.
+
+(This was made pretty long ago... so looking back at the code, it is quite inefficient. Not sure if I will rewrite, but it still works.)
 
 To use, simply insert the code in the Library_GlassUI text file into a ModuleScript on Roblox, and place ModuleScript under ServerStorage in the game. To use the library, simply require() the ModuleScript and then call the functions inside the library with the appropriate arguments.
+
+Inside the Frame objects for each button, there should be a LocalScript that will be run when a player clicks on a menu item.
 
 ```
 GlassUI = require(game.ServerStorage.Library_GlassUI)
